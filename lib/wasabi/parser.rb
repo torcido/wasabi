@@ -124,7 +124,7 @@ module Wasabi
       type.xpath('./xs:complexContent/xs:extension[@base]',
         "xs" => "http://www.w3.org/2001/XMLSchema"
       ).each do |inherits|
-        base = inherits.attribute('base').value.match(/\w+$/).to_s
+        base = inherits.attribute('base').value.match(/[\w-]+$/).to_s
         if @types[base]
           @types[name].merge! @types[base]
         else
